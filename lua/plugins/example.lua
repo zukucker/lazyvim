@@ -1,15 +1,24 @@
--- since this is just an example spec, don't actually load anything here and return an empty spec
--- stylua: ignore
--- if true then return {} end
-
--- every spec file under the "plugins" directory will be loaded automatically by lazy.nvim
---
--- In your plugin files, you can:
--- * add extra plugins
--- * disable/enabled LazyVim plugins
--- * override the configuration of LazyVim plugins
 return {
   -- change some telescope options and a keymap to browse plugin files
+
+   { 'echasnovski/mini.comment', 
+    version = '*',
+    mappings = {
+        -- Toggle comment (like `gcip` - comment inner paragraph) for both
+        -- Normal and Visual modes
+        comment = 'cc',
+
+        -- Toggle comment on current line
+        comment_line = 'cc',
+
+        -- Toggle comment on visual selection
+        comment_visual = 'cc',
+
+        -- Define 'comment' textobject (like `dgc` - delete whole comment block)
+        -- Works also in Visual mode if mapping differs from `comment_visual`
+        textobject = 'cc',
+    },
+    },
   {
     "nvim-telescope/telescope.nvim",
     keys = {

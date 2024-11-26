@@ -29,10 +29,21 @@ return {
         function() require("telescope.builtin").find_files() end,
         desc = "Find Files",
       },
+      {
+        "<leader>cp",
+        function() require("telescope.builtin").find_files({cwd = "/var/www/html/custom/plugins/"}) end,
+        desc = "Edit Plugins(Shopware)",
+      },
     },
     -- change some options
     opts = {
       defaults = {
+        file_ignore_patterns = { 
+            "./var/*",
+            "node_modules",
+            "./public/media",
+            "png"
+        },
         layout_strategy = "horizontal",
         layout_config = { prompt_position = "top" },
         sorting_strategy = "ascending",
@@ -48,9 +59,7 @@ return {
     opts = {
       ---@type lspconfig.options
       servers = {
-        -- pyright will be automatically installed with mason and loaded with lspconfig
         phpactor = {},
-        intelephense = {},
         pyright = {},
       },
     },

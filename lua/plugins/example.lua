@@ -59,6 +59,7 @@ return {
     opts = {
       ---@type lspconfig.options
       servers = {
+        gopls = {},
         phpactor = {},
         pyright = {},
       },
@@ -126,5 +127,5 @@ return {
         "php",
       },
     },
-},
+  },
 }

@@ -7,5 +7,16 @@ require('mini.comment').setup(
     comment_line = ',cc',
     comment_visual = ',cc',
   },
-}
-)
+})
+require('mini.pairs').setup({
+    mappings = {
+        -- Deaktiviere automatische Anführungszeichen
+        ['"'] = { register = { cr = true } },
+        ["'"] = { register = { cr = true } },
+        -- Andere automatische Paare bleiben aktiv
+        ['('] = { action = 'open', pair = '()', neigh_pattern = '[^\\].' },
+        ['['] = { action = 'open', pair = '[]', neigh_pattern = '[^\\].' },
+        ['{'] = { action = 'open', pair = '{}', neigh_pattern = '[^\\].' },
+    }
+})
+

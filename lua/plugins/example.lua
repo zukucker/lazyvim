@@ -1,24 +1,7 @@
 return {
-  -- change some telescope options and a keymap to browse plugin files
-
-   { 'echasnovski/mini.comment', 
-    version = '*',
-    mappings = {
-        -- Toggle comment (like `gcip` - comment inner paragraph) for both
-        -- Normal and Visual modes
-        comment = 'cc',
-
-        -- Toggle comment on current line
-        comment_line = 'cc',
-
-        -- Toggle comment on visual selection
-        comment_visual = 'cc',
-
-        -- Define 'comment' textobject (like `dgc` - delete whole comment block)
-        -- Works also in Visual mode if mapping differs from `comment_visual`
-        textobject = 'cc',
-    },
-    },
+  {
+    "preservim/nerdcommenter",
+  },
   {
     "nvim-telescope/telescope.nvim",
     keys = {
@@ -31,18 +14,21 @@ return {
       },
       {
         "<leader>cp",
-        function() require("telescope.builtin").find_files({cwd = "/var/www/html/custom/plugins/"}) end,
+        function()
+          require("telescope.builtin").find_files({ cwd = "/var/www/html/custom/plugins/" })
+        end,
         desc = "Edit Plugins(Shopware)",
       },
     },
     -- change some options
     opts = {
       defaults = {
-        file_ignore_patterns = { 
-            "./var/*",
-            "node_modules",
-            "./public/media",
-            "png"
+        file_ignore_patterns = {
+          ".git",
+          "./var/*",
+          "node_modules",
+          "./public/media",
+          "png",
         },
         layout_strategy = "horizontal",
         layout_config = { prompt_position = "top" },
@@ -84,6 +70,7 @@ return {
       ---@type lspconfig.options
       servers = {
         -- tsserver will be automatically installed with mason and loaded with lspconfig
+        gopls = {},
         tsserver = {},
       },
       -- you can do any additional lsp server setup here
